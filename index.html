@@ -1,0 +1,87 @@
+<!doctype html>
+<html ng-app="marksApp">
+
+<head>
+    <script src="js/angular.min.js"></script>
+    <script src="js/marks.js"></script> </script>
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+        <h2 align="center">Marks for CS136</h2>
+        <div ng-controller="MarksController as marksList">
+            <div style="text-align:right; margin-right: 670px", >
+            <ul>
+                <li ng-repeat="i in marksList.marks" style="list-style-type:none">
+                <span>{{i.text}}</span>
+                <input type="text" id="{{i.text}}" style="width: 100px" maxlength="4">
+                </li>
+                <li style="list-style-type:none">
+                    <span>participation</span>
+                    <input id="participation" type="text" placeholder="out of 5" style="width:100px" maxlength="1">
+                </li>
+                <li style="list-style-type:none">
+                    <span>total number of assignments</span>
+                    <input id="changeTNA" type="text" placeholder="9" style="width:100px" maxlength="2">
+                </li>
+                <li style="list-style-type:none">
+                    <span>what are you aimming for</span>
+                    <input id="expect" type="text" placeholder="50" style="width:100px" maxlength="4">
+                </li>
+                
+            </ul>
+            </div>
+            
+            <p style="text-align: right; margin-right: 135.1px;margin-bottom: 10px;">
+            <button ng-click="marksList.addAssignment()"></button>Add an Assignment</p>
+            <br>
+            <p style="text-align: right; margin-right: 100.2px;margin-bottom: 10px;">
+            <button style="background-color: red;" ng-click="marksList.archive()"></button>Remove an Assignment</p>
+            <br>
+            <p style="text-align: right; margin-right: 219.9px;margin-bottom: 10px;">
+                <button style="background-color:darkcyan;" ng-click="marksList.calculate()"></button>Calculate</p>
+            <p style="text-align: right; margin-right: 115.9px;margin-bottom: 10px;">
+                <span>More on</span>
+                <select style="width: 130px" id="preference">
+                    
+                    <option value="final" selected>Final</option>
+                    <option value="asgmt">Assignment</option>
+                    <option value="rand">Random</option>
+                </select>
+            </p>
+            
+            <br>
+            <div id="actual_text" style="display: none">
+                <font size="+1">
+            <p style="text-align:left; margin-left: 310px" >
+                Your current {{marksList.currentAssignmentN}} assignments have an average of <strong>{{marksList.currentAssignmentAverage}}</strong>.
+                
+                There are a total of {{marksList.totalAssignmentN}} assignments.
+                <br>
+                In order to pass the assignments, you need an average of <strong>{{marksList.passAsgmt}}</strong> for the remaining {{marksList.remainingAssignmentN}} assignments.
+                <br>
+                In order to pass the exams, you need an average of <strong>{{marksList.passExam}}</strong> for your final.
+                <br>
+                If you are aimming for <strong>{{marksList.aimming}}</strong> for this course,
+                <br>
+                you need an average of <strong>{{marksList.assignmentAim}}</strong> for your remaining {{marksList.remainingAssignmentN}} assignments and a <strong>{{marksList.finalAim}}</strong> for your final.
+            </p>
+            </font>
+            </div>
+            <div style="text-align: right;margin-right: 30px">
+                <p style="color: gray">
+                    <br><br>
+                    <br>
+                    Website by Adam Yuan <a style="color:gray" href="mailto:d9yuan@uwaterloo.ca">d9yuan@uwaterloo.ca.</a>
+                    <br>
+                    Calculation by Jason Wu <a style="color:gray" href="mailto:h286wu@uwaterloo.ca">h286wu@uwaterloo.ca.</a>
+                    <br>If you found any error or have any feedback, <br>please send us an email.
+                    <br>You feedbacks are appreciated.
+                    <br>This site is for reference only.
+                </p>
+
+            </div>        
+        </div>
+</body> 
+
+</html>
